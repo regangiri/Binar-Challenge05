@@ -10,12 +10,9 @@ import Searchcontainer from "../components/Searchcontainer";
 
 function Footer() {
   return (
-    <div className="relative font-helvetica">
-      <div className="absolute sm:bottom-2/3 w-full  ">
-        <Searchcontainer />
-      </div>
-      <div className="flex md:flex-row flex-col text-xs md:text-sm  items-center justify-center sm:justify-around pt-40 md:py-32 ">
-        <div className="address sm:pt-0 pt-48 flex sm:items-center sm:justify-center flex-col md:text-left text-center py-6 sm:py-0">
+    <div className=" font-helvetica">
+      <div className="flex md:flex-row flex-col text-xs md:text-sm  items-center justify-center sm:justify-around md:py-24 ">
+        <div className="address sm:pt-0 flex sm:items-center sm:justify-center flex-col md:text-left text-center py-6 sm:py-0">
           <p>Jalan Suroyo No. 161 Mayangan Kota Probolonggo 672000</p>
           <p>binarcarrental@gmail.com</p>
           <p>081-233-334-808</p>

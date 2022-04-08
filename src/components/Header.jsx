@@ -14,7 +14,7 @@ function Header() {
   };
 
   return (
-    <div className="relative">
+    <div className="">
       <header
         className={`${
           isActive ? "w-1/2 h-screen" : "w-full"
