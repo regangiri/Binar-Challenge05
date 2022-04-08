@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "react-hero-icon";
 import logo from "../assets/bcr_logo.png";

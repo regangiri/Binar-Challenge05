@@ -1,6 +1,5 @@
 import React from "react";
 import heroImage from "../assets/img_car.png";
-import Searchcontainer from "../components/Searchcontainer";
 function Homepage() {
   return (
     <div className="">
