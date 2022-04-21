@@ -1,5 +1,6 @@
 import React from "react";
 import Icon from "react-hero-icon";
+import { useSelector } from "react-redux";
 
 function Carcard(props) {
   return (

@@ -1,7 +1,16 @@
 import React from "react";
 import Icon from "react-hero-icon";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  togglePayment,
+  togglePaymentButtonToggle,
+} from "../redux/actions/paymentToggle";
 
 function Detailcar(props) {
+  const dispatch = useDispatch();
+
+  const { paymentClicked } = useSelector((state) => state.paymentReducer);
+
   return (
     <div>
       <div className="paket-container w-full flex lg:flex-row flex-col font-helvetica items-start justify-start">
@@ -67,9 +76,16 @@ function Detailcar(props) {
               <h4>Total</h4>
               <h4>Rp {props.price}</h4>
             </div>
-            <button className="w-5/6 mx-8 my-3 h-10 text-white font-bold font-helvetica bg-[#5CB85F]">
+            <button
+              className="w-5/6 mx-8 my-3 h-10 text-white font-bold font-helvetica bg-[#5CB85F]"
+              onClick={() => dispatch(togglePaymentButtonToggle())}
+            >
               {" "}
-              Lanjutkan Pembayaran
+              {paymentClicked ? (
+                <p>Lanjutkan Pembayaran</p>
+              ) : (
+                <p>pilih mobil</p>
+              )}
             </button>
           </div>
         </div>

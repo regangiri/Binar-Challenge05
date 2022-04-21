@@ -1,32 +1,34 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Carcard from "./Carcard";
+import { useSelector, useDispatch } from "react-redux";
 
 function Searchcontainer(props) {
-  const [carData, setCarData] = useState([]);
-  const [isClicked, setIsClicked] = useState(false);
+  // const [carData, setCarData] = useState([]);
+  // const [isClicked, setIsClicked] = useState(false);
   // const [tanggal, setTanggal] = useState("");
   // const [waktuJemput, setWaktuJemput] = useState("");
   // const [tipeDriver, setTipeDriver] = useState("");
   // const [jumlahPenumpang, setJumlahPenumpang] = useState(0);
+  // const dispatch = useDispatch();
+  const { searching } = useSelector((state) => state.searchReducer);
 
   useEffect(() => {
-    getCarData();
-    console.log(carData);
+    console.log(searching);
   }, []);
 
-  async function getCarData() {
-    await axios
-      .get("https://rent-cars-api.herokuapp.com/admin/car")
-      .then((res) => {
-        setCarData(res.data);
-        console.log(carData);
-      });
-  }
+  // async function getCarData() {
+  //   await axios
+  //     .get("https://rent-cars-api.herokuapp.com/admin/car")
+  //     .then((res) => {
+  //       setCarData(res.data);
+  //       console.log(carData);
+  //     });
+  // }
 
   function searchButtonClicked(e) {
-    e.preventDefault();
-    setIsClicked(!isClicked);
+    // e.preventDefault();
+    // dispatch({ type: "searchToggle" });
   }
 
   // const carDataIteration = carData.map((data) => {
@@ -111,7 +113,7 @@ function Searchcontainer(props) {
             type="submit"
             onClick={props.searchCar}
           >
-            {isClicked ? <p>edit</p> : <p>Cari Mobil</p>}
+            {searching ? <p>edit</p> : <p>Cari Mobil</p>}
           </button>
         </div>
       </form>

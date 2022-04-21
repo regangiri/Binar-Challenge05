@@ -5,34 +5,24 @@ import Searchcontainer from "../components/Searchcontainer";
 import axios from "axios";
 import { logDOM } from "@testing-library/dom";
 import Detailcar from "../components/Detailcar";
+import { fetchCar, fetchCarId } from "../redux/actions/carAction";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { searchButtonToggle } from "../redux/actions/searchAction";
 
 function Homepage() {
-  const [carData, setCarData] = useState([]);
+  // const [carData, setCarData] = useState([]);
   const [searchingCar, setSearchingCar] = useState(false);
   const [tipeDriver, setTipeDriver] = useState(null);
-  const [carId, setCarId] = useState([]);
+  // const [carId, setCarId] = useState([]);
   const [showDetailCar, setShowDetailCar] = useState(false);
 
+  const dispatch = useDispatch();
+  const { carData } = useSelector((state) => state.carReducer);
+  const { carId } = useSelector((state) => state.carReducer);
   useEffect(() => {
-    getCarData();
+    dispatch(fetchCar());
   }, []);
-
-  async function getCarData() {
-    await axios
-      .get("https://rent-cars-api.herokuapp.com/admin/car")
-      .then((res) => {
-        setCarData(res.data);
-      });
-  }
-
-  async function getCarById(id) {
-    await axios
-      .get(`https://rent-cars-api.herokuapp.com/admin/car/${id}`)
-      .then((res) => {
-        setCarId(res.data);
-      });
-    console.log(id);
-  }
 
   return (
     <>
@@ -56,7 +46,7 @@ function Homepage() {
           <Searchcontainer
             searchCar={(e) => {
               e.preventDefault();
-
+              dispatch(searchButtonToggle());
               setSearchingCar(true);
               setShowDetailCar(false);
             }}
@@ -85,21 +75,10 @@ function Homepage() {
                       status={data.status}
                       detailCar={(e) => {
                         e.preventDefault();
+                        dispatch(fetchCarId(data.id));
                         setSearchingCar(false);
-                        getCarById(data.id);
+                        // getCarById(data.id);
                         setShowDetailCar(true);
-                        // return carId.map((data) => {
-                        //   return (
-                        //     <Detailcar
-                        //       id={data.id}
-                        //       startRent={data.start_rent_at}
-                        //       name={data.name}
-                        //       image={data.image}
-                        //       price={data.price}
-                        //       status={data.status}
-                        //     />
-                        //   );
-                        // });
                       }}
                     />
                   </div>
