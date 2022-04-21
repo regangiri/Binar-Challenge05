@@ -1,6 +1,7 @@
 import React from "react";
 import Icon from "react-hero-icon";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchCarId } from "../redux/actions/carAction";
 import {
   togglePayment,
   togglePaymentButtonToggle,
@@ -10,6 +11,7 @@ function Detailcar(props) {
   const dispatch = useDispatch();
 
   const { paymentClicked } = useSelector((state) => state.paymentReducer);
+  const { carId } = useSelector((state) => state.carReducer);
 
   return (
     <div>
@@ -62,14 +64,16 @@ function Detailcar(props) {
             <h1>{props.name}</h1>
             <div className="flex flex-row justify-center items-center ">
               <p className="mx-3 py-3">
-                <Icon className="mr-3" icon="users" type="outline" /> 4 orang{" "}
+                <Icon className="mr-3" icon="users" type="outline" />{" "}
+                {carId.passenger}
               </p>
               <p className=" mx-3 py-3">
-                <Icon className="mr-3" icon="cog" type="outline" /> Manual{" "}
+                <Icon className="mr-3" icon="cog" type="outline" />{" "}
+                {carId.engine}
               </p>
               <p className=" mx-3 py-3">
-                <Icon className="mr-3" icon="calendar" type="outline" /> Tahun
-                2020{" "}
+                <Icon className="mr-3" icon="calendar" type="outline" />{" "}
+                {carId.year}
               </p>
             </div>
             <div className="total flex items-center justify-center">

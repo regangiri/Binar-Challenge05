@@ -20,6 +20,8 @@ function Homepage() {
   const dispatch = useDispatch();
   const { carData } = useSelector((state) => state.carReducer);
   const { carId } = useSelector((state) => state.carReducer);
+  const { searching } = useSelector((state) => state.searchReducer);
+
   useEffect(() => {
     dispatch(fetchCar());
   }, []);
@@ -58,7 +60,7 @@ function Homepage() {
         </div>
       </div>
       <div className="flex justify-center flex-wrap items-center sm:flex-row flex-col sm:pt-24">
-        {searchingCar
+        {searching
           ? carData
               .filter((data) => {
                 return data.status.toString() === tipeDriver;
@@ -73,6 +75,9 @@ function Homepage() {
                       image={data.image}
                       price={data.price}
                       status={data.status}
+                      passenger={data.passenger}
+                      engine={data.engine}
+                      year={data.year}
                       detailCar={(e) => {
                         e.preventDefault();
                         dispatch(fetchCarId(data.id));
@@ -95,6 +100,9 @@ function Homepage() {
             image={carId.image}
             price={carId.price}
             status={carId.status}
+            passenger={carId.passenger}
+            engine={carId.engine}
+            year={carId.year}
           />
         ) : null}
       </div>

@@ -20,11 +20,11 @@ export const fetchCar = () => {
       .get("https://rent-cars-api.herokuapp.com/admin/car")
       .then((res) => {
         const car = res.data;
-        // res.forEach((car) => {
-        //   car.passenger = "4 orang";
-        //   car.engine = "Manual";
-        //   car.year = "Tahun 2020";
-        // });
+        car.forEach((data) => {
+          data.passenger = "4 orang";
+          data.engine = "Manual";
+          data.year = "Tahun 2020";
+        });
         dispatch(fetchCarSuccess(car));
       })
       .catch((err) => {
@@ -39,6 +39,11 @@ export const fetchCarId = (id) => {
       .get(`https://rent-cars-api.herokuapp.com/admin/car/${id}`)
       .then((res) => {
         const carId = res.data;
+
+        carId.passenger = "4 orang";
+        carId.engine = "Manual";
+        carId.year = "Tahun 2020";
+
         dispatch(fetchCarIdSuccess(carId));
       })
       .catch((err) => console.log(err));
