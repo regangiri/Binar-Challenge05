@@ -4,49 +4,11 @@ import Carcard from "./Carcard";
 import { useSelector, useDispatch } from "react-redux";
 
 function Searchcontainer(props) {
-  // const [carData, setCarData] = useState([]);
-  // const [isClicked, setIsClicked] = useState(false);
-  // const [tanggal, setTanggal] = useState("");
-  // const [waktuJemput, setWaktuJemput] = useState("");
-  // const [tipeDriver, setTipeDriver] = useState("");
-  // const [jumlahPenumpang, setJumlahPenumpang] = useState(0);
-  // const dispatch = useDispatch();
   const { searching } = useSelector((state) => state.searchReducer);
 
   useEffect(() => {
     console.log(searching);
   }, []);
-
-  // async function getCarData() {
-  //   await axios
-  //     .get("https://rent-cars-api.herokuapp.com/admin/car")
-  //     .then((res) => {
-  //       setCarData(res.data);
-  //       console.log(carData);
-  //     });
-  // }
-
-  function searchButtonClicked(e) {
-    // e.preventDefault();
-    // dispatch({ type: "searchToggle" });
-  }
-
-  // const carDataIteration = carData.map((data) => {
-  //   return (
-  //     <Carcard
-  //       id={data.id}
-  //       startRent={data.start_rent_at}
-  //       name={data.name}
-  //       image={data.image}
-  //       price={data.price}
-  //       status={data.status}
-  //     />
-  //   );
-  // });
-
-  // useEffect(() => {
-  //   alert(`${tipeDriver}, ${tanggal}, ${waktuJemput}, ${jumlahPenumpang}`);
-  // }, [tipeDriver]);
 
   return (
     <div className="flex flex-colitems-center font-helvetica justify-center  text-black bg-primary">
@@ -74,7 +36,6 @@ function Searchcontainer(props) {
             type="date"
             id="tanggal"
             name="tanggal"
-            // onChange={(e) => setTanggal(e.target.value)}
           />
         </div>
         <div className="form-child font-light w-full mx-3 flex items-start justify-center flex-col">
@@ -89,7 +50,6 @@ function Searchcontainer(props) {
             type="time"
             id="waktujemput"
             name="waktujemput"
-            // onChange={(e) => setWaktuJemput(e.target.value)}
           />
         </div>
         <div className="form-child font-light w-full mx-3 flex items-start justify-center flex-col">
@@ -104,7 +64,6 @@ function Searchcontainer(props) {
             className="w-full bg-transparent border-2 border-[#D0D0D0] ring-1 p-2 my-1 text-gray-500 ring-white rounded-sm"
             name="jumlahpenumpang"
             id="jumlahpenumpang"
-            // onChange={(e) => setJumlahPenumpang(e.target.value)}
           />
         </div>
         <div className="form-child font-light w-full mx-1 flex items-start justify-center flex-col">

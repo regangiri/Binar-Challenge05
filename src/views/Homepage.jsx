@@ -11,10 +11,8 @@ import { useSelector } from "react-redux";
 import { searchButtonToggle } from "../redux/actions/searchAction";
 
 function Homepage() {
-  // const [carData, setCarData] = useState([]);
   const [searchingCar, setSearchingCar] = useState(false);
   const [tipeDriver, setTipeDriver] = useState(null);
-  // const [carId, setCarId] = useState([]);
   const [showDetailCar, setShowDetailCar] = useState(false);
 
   const dispatch = useDispatch();
@@ -82,7 +80,6 @@ function Homepage() {
                         e.preventDefault();
                         dispatch(fetchCarId(data.id));
                         setSearchingCar(false);
-                        // getCarById(data.id);
                         setShowDetailCar(true);
                       }}
                     />
